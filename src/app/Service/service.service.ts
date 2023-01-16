@@ -7,9 +7,19 @@ import {Employee} from "../Modelo/Employee";
 })
 export class ServiceService {
   constructor(private http:HttpClient) { }
-  Url='/api/list';
+
   getall(){
-    return this.http.get<Employee[]>(this.Url);
+    return this.http.get<Employee[]>('/api/list');
   }
+
+  addEmployee(employee:Employee){
+    return this.http.post<Employee>('/api/save-employee',employee);
+  }
+
+  deleteEmployee(id: number | undefined){
+    return this.http.delete<any>('/api/delete-employee/'+id);
+  }
+
+
 
 }

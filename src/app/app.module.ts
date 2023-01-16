@@ -9,6 +9,7 @@ import { DeleteComponent } from './Employee/delete/delete.component';
 import { FormsModule } from '@angular/forms';
 import {ServiceService} from './Service/service.service';
 import { HttpClientModule } from '@angular/common/http'
+import {NgxPaginationModule} from 'ngx-pagination'
 
 @NgModule({
   declarations: [
@@ -21,7 +22,8 @@ import { HttpClientModule } from '@angular/common/http'
     BrowserModule,
     AppRoutingModule,
     FormsModule,
-    HttpClientModule
+    HttpClientModule,
+    NgxPaginationModule
   ],
   providers: [ServiceService],
   bootstrap: [AppComponent]

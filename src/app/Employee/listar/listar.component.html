@@ -6,7 +6,7 @@
     <div class="card-body">
       <table class="table table-hover">
         <thead>
-          <tr>
+          <tr class="text-center">
             <th>Primer Nombre</th>
             <th>Otros Nombres</th>
             <th>Primer Apellido</th>
@@ -15,17 +15,25 @@
           </tr>
         </thead>
         <tbody>
-          <tr *ngFor="let employee of employees" class="text-center">
+          <tr *ngFor="let employee of employees | paginate: {itemsPerPage:10,currentPage: page}" class="text-center">
             <td>{{employee.name}}</td>
             <td>{{employee.surName}}</td>
             <td>{{employee.lastName}}</td>
             <td>{{employee.email}}</td>
             <td>
-              <button class="btn btn-danger">Eliminar</button>
+              <button (click)="delete(employee)" class="btn btn-danger">Eliminar</button>
             </td>
           </tr>
         </tbody>
+        <tfoot>
+          <tr class="text-center">
+            <td colspan="5">
+              <pagination-controls (pageChange)="page = $event" previousLabel="Anterior" nextLabel="Siguiente"></pagination-controls>
+            </td>
+          </tr>
+        </tfoot>
       </table>
     </div>
   </div>
 </div>
+
